@@ -100,13 +100,8 @@ strong, b {
   margin-bottom: 14px;
 }
 
-.contact-line a {
-  color: #555;
-}
-
-.contact-line a:hover {
-  color: #1e5a9e;
-}
+.contact-line a { color: #555; }
+.contact-line a:hover { color: #1e5a9e; }
 
 .dot {
   color: #ccc;
@@ -119,9 +114,7 @@ main {
   padding-bottom: 48px;
 }
 
-.section {
-  padding: 24px 0;
-}
+.section { padding: 24px 0; }
 
 .section-title {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -145,13 +138,8 @@ main {
   border-radius: 1px;
 }
 
-.section p {
-  margin-bottom: 10px;
-}
-
-.section p:last-child {
-  margin-bottom: 0;
-}
+.section p { margin-bottom: 10px; }
+.section p:last-child { margin-bottom: 0; }
 
 .divider {
   border: none;
@@ -193,9 +181,7 @@ main {
   line-height: 1.65;
 }
 
-.accent-box .tags {
-  margin-top: 12px;
-}
+.accent-box .tags { margin-top: 12px; }
 
 .research-grid {
   display: grid;
@@ -255,9 +241,7 @@ main {
   margin-bottom: 0;
 }
 
-.proj-card .tags {
-  margin-top: 8px;
-}
+.proj-card .tags { margin-top: 8px; }
 
 .meta-row {
   font-size: 0.8125rem !important;
@@ -273,7 +257,7 @@ main {
   margin-right: 4px;
 }
 
-/* Publications list */
+/* Publications */
 .pub-list {
   display: flex;
   flex-direction: column;
@@ -333,91 +317,63 @@ main {
 .pub-links a { color: #1e5a9e; }
 .pub-links .dot { color: #ccc; }
 
-/* Paper image gallery (under publications text list) */
-.paper-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* Horizontal scrolling image row */
+.paper-scroll,
+.image-scroll {
+  display: flex;
   gap: 10px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #eeeeee;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px 0 16px;
+  margin: 16px -24px 0;
+  padding-left: 24px;
+  padding-right: 24px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
 }
 
-.paper-gallery a {
-  display: block;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.2s;
+.paper-scroll::-webkit-scrollbar,
+.image-scroll::-webkit-scrollbar {
+  height: 6px;
 }
 
-.paper-gallery a:hover {
-  border-color: #1e5a9e;
-  transform: translateY(-2px);
-  text-decoration: none;
+.paper-scroll::-webkit-scrollbar-thumb,
+.image-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
 }
 
-.paper-gallery img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Project image gallery (text-free) */
-.project-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.project-gallery a {
+.paper-scroll a,
+.image-scroll a {
+  flex: 0 0 auto;
   display: block;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   overflow: hidden;
   background: #fafafa;
+  scroll-snap-align: start;
   transition: border-color 0.2s, transform 0.2s;
 }
 
-.project-gallery a:hover {
+.paper-scroll a:hover,
+.image-scroll a:hover {
   border-color: #1e5a9e;
   transform: translateY(-2px);
   text-decoration: none;
 }
 
-.project-gallery img {
-  width: 100%;
-  height: 220px;
+.paper-scroll img {
+  width: 180px;
+  height: 240px;
   object-fit: cover;
   display: block;
 }
 
-/* Design gallery */
-.design-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.design-gallery a {
-  display: block;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-  background: #fafafa;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.design-gallery a:hover {
-  border-color: #1e5a9e;
-  transform: translateY(-2px);
-  text-decoration: none;
-}
-
-.design-gallery img {
-  width: 100%;
-  height: 220px;
+.image-scroll img {
+  width: 260px;
+  height: 180px;
   object-fit: cover;
   display: block;
 }
@@ -446,14 +402,18 @@ main {
   .photo-frame { width: 90px; height: 90px; margin-bottom: 14px; }
   .section { padding: 18px 0; }
 
-  .research-grid,
-  .project-gallery,
-  .design-gallery {
+  .research-grid {
     grid-template-columns: 1fr;
   }
 
-  .paper-gallery {
-    grid-template-columns: 1fr;
+  .paper-scroll img {
+    width: 140px;
+    height: 180px;
+  }
+
+  .image-scroll img {
+    width: 220px;
+    height: 150px;
   }
 
   .top-line-box,
@@ -478,9 +438,8 @@ main {
     break-inside: avoid;
   }
 
-  .paper-gallery,
-  .project-gallery,
-  .design-gallery {
+  .paper-scroll,
+  .image-scroll {
     display: none;
   }
 }
